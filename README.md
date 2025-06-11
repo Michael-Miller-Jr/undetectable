@@ -38,6 +38,28 @@ This tool isn't about circumventing fair monetization; it's about pushing back a
 
 ---
 
+🧱 Works Best With These Ad Blockers
+Undetectable is designed to complement popular ad blockers, not replace them. It works best when used alongside the following:
+
+uBlock Origin
+Lightweight and highly customizable, with minimal resource usage.
+
+Adblock Plus
+Widely used and easy to configure, with options for filter subscriptions.
+
+Ghostery
+Focuses on privacy and tracker blocking, with some ad-blocking capabilities.
+
+Brave Browser (Built-in Shield)
+Built-in ad and tracker blocking, which Undetectable enhances by helping suppress detection prompts.
+
+Privacy Badger
+Created by the EFF, this tool blocks trackers and some ads based on behavior.
+
+These tools handle the blocking. Undetectable ensures you don’t get hassled for using them.
+
+---
+
 ## 🛠️ Installation
 
 To protect your privacy and avoid detection, **Undetectable must be loaded manually as an unpacked extension**:
