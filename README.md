@@ -4,6 +4,14 @@
 
 **Undetectable** is a Chrome extension that prevents websites from detecting ad blockers and hides annoying messages asking you to disable them. It simulates normal ad behavior, spoofs common detection variables, and logs detection attempts locally—all while giving you full control via an intuitive popup and options interface.
 
+💡 Why This Exists
+The author of this extension believes users should have the freedom to browse the internet without constant interruptions or coercive messaging. Just as individuals can walk down a street and choose to ignore advertisements in the physical world, they should be able to do the same online.
+
+Undetectable was created to support this principle:
+A quiet, respectful browsing experience where users - not aggressive scripts or popup warnings - remain in control.
+
+This tool isn't about circumventing fair monetization; it's about pushing back against disruptive, invasive practices that degrade the web experience.
+
 ---
 
 ![stealth-level](https://github.com/user-attachments/assets/0b91e86d-a401-40ca-990c-5cb1e5873b94)
