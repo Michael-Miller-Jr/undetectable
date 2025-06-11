@@ -6,6 +6,8 @@
 
 ---
 
+![stealth-level](https://github.com/user-attachments/assets/0b91e86d-a401-40ca-990c-5cb1e5873b94)
+
 ## 🚀 Features
 
 - **Block Ad Block Detection**  
