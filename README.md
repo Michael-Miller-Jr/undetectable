@@ -254,4 +254,4 @@ Pull requests and issues are welcome! Whether it's improving stealth behavior or
 
 ## 🧊 Final Note
 
-Undetectable is for users who want peace of mind and a smoother browsing experience—without being harassed by popup overlays, page blocks, or false ad prompts. Install it, toggle it, and browse quietly.
+Undetectable is for users who want peace of mind and a smoother browsing experience - without being harassed by popup overlays, page blocks, or false ad prompts. Install it, toggle it, and browse quietly.
