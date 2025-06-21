@@ -2,7 +2,16 @@
 
 ![icon128](https://github.com/user-attachments/assets/fab0ba65-415a-4747-80f0-dcbf983f2962)
 
-**Undetectable** is a Chrome extension that prevents websites from detecting ad blockers and hides annoying messages asking you to disable them. It simulates normal ad behavior, spoofs common detection variables, and logs detection attempts locally—all while giving you full control via an intuitive popup and options interface.
+**Undetectable** is a Chrome extension designed to work alongside your ad blocker—not replace it. While it doesn't block ads itself, it helps prevent websites from detecting that you're using an ad blocker. By simulating normal ad behavior, spoofing common detection methods, and hiding anti-adblock warnings, it keeps your browsing smooth and uninterrupted. All detection attempts are logged locally, and you stay in control with a clean, user-friendly popup and options interface.
+
+For the sake of clarity: When the description says it "simulates normal ad behavior" or "spoofs normal ads," it means that the extension:
+- Creates decoy ad elements (like <div class="adsbygoogle"> or <ins class="ad-slot">) that look like real ads to detection scripts.
+- Fakes global ad variables (like window.adsbygoogle or window.google_ad_status) so scripts that try to detect whether ads are loading see values that indicate ads are loading.
+- Overrides or fills in attributes (like data-ad-status="unfilled" → "filled") to make the page believe ads successfully loaded.
+
+This tricks anti-adblock scripts into thinking ads are working normally, even though your ad blocker is still quietly blocking them in the background.
+
+So to clarify: the extension doesn’t block or display real ads, but it fakes the presence of ads just enough to fool detection mechanisms. That’s the key to staying “undetectable.”
 
 ## 💡 Why This Exists
 The author of this extension believes users should have the freedom to browse the internet without constant interruptions or coercive messaging. Just as individuals can walk down a street and choose to ignore advertisements in the physical world, they should be able to do the same online.
