@@ -45,7 +45,7 @@ This tool isn't about circumventing fair monetization; it's about pushing back a
 
 ---
 
-🧱 Works Best With These Ad Blockers
+## 🧱 Works Best With These Ad Blockers
 Undetectable is designed to complement popular ad blockers, not replace them. It works best when used alongside the following:
 
 - **uBlock Origin**
