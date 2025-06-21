@@ -5,9 +5,9 @@
 **Undetectable** is a Chrome extension designed to work alongside your ad blocker—not replace it. While it doesn't block ads itself, it helps prevent websites from detecting that you're using an ad blocker. By simulating normal ad behavior, spoofing common detection methods, and hiding anti-adblock warnings, it keeps your browsing smooth and uninterrupted. All detection attempts are logged locally, and you stay in control with a clean, user-friendly popup and options interface.
 
 For the sake of clarity: When the description says it "simulates normal ad behavior" or "spoofs normal ads," it means that the extension:
-- Creates decoy ad elements (like <div class="adsbygoogle"> or <ins class="ad-slot">) that look like real ads to detection scripts.
-- Fakes global ad variables (like window.adsbygoogle or window.google_ad_status) so scripts that try to detect whether ads are loading see values that indicate ads are loading.
-- Overrides or fills in attributes (like data-ad-status="unfilled" → "filled") to make the page believe ads successfully loaded.
+- Creates decoy ad elements like <div class="adsbygoogle"> or <ins class="ad-slot"> that look like real ads to detection scripts.
+- Fakes global ad variables like window.adsbygoogle or window.google_ad_status so scripts that try to detect whether ads are loading see values that indicate ads are loading.
+- Overrides or fills in attributes like data-ad-status="unfilled" → "filled" to make the page believe ads successfully loaded.
 
 This tricks anti-adblock scripts into thinking ads are working normally, even though your ad blocker is still quietly blocking them in the background.
 
