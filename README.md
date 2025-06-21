@@ -124,6 +124,8 @@ undetectable/
 ├── options.js
 ├── universal-stealth.js
 ├── youtube-stealth.js
+├── stealth.min.js
+├── injector.js
 ├── manifest.json
 └── README.md
 ```
