@@ -93,6 +93,14 @@
                     logAndTrigger(`Suspicious attribute detected: [${attr}]`);
                 }
             });
+
+            // Detect and remove .notification__left-message warning
+            const specificNotification = document.querySelector('.notification__left-message');
+            if (specificNotification && /disable your ad blocker/i.test(specificNotification.innerText)) {
+                logAndTrigger('Matched .notification__left-message warning text');
+                specificNotification.closest('.notification')?.remove();
+                logDetectionAttempt('Removed .notification__left-message warning container');
+            }
         }
 
         function scanScripts() {
