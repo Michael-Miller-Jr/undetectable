@@ -19,7 +19,9 @@ The author of this extension believes users should have the freedom to browse th
 Undetectable was created to support this principle:
 A quiet, respectful browsing experience where users - not aggressive scripts or popup warnings - remain in control.
 
-This tool isn't about circumventing fair monetization; it's about pushing back against disruptive, invasive practices that degrade the web experience.
+This tool isn't about circumventing fair monetization; it's about pushing back against disruptive, invasive practices that degrade the web experience. While your ad blocker handles the job of stopping ads from being loaded or shown, Undetectable works alongside it to prevent detection scripts from realizing that ads are missing. It covers your tracks by faking the presence of ads, helping avoid nag screens, overlays, or content blocks.
+
+Even major platforms and ad networks (including Google) have served malicious ads in the past. When used in combination with an ad blocker, this extension adds an extra layer of control and, in many cases, security.
 
 ---
 
