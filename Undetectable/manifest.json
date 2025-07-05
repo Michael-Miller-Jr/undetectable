@@ -1,6 +1,6 @@
 {
   "name": "Undetectable",
-  "version": "1.5",
+  "version": "1.6",
   "description": "Subtly normalizes web content behavior while enhancing user experience.",
   "manifest_version": 3,
   "permissions": [

@@ -165,6 +165,23 @@
                     logDetectionAttempt('Removed .notification__left-message warning container');
                 }
             }
+
+            // --- Custom user-defined suppressions ---
+            chrome.storage.local.get(['customSuppressedDivs', 'customSuppressedIds'], (data) => {
+                (data.customSuppressedDivs || []).forEach(cls => {
+                    document.querySelectorAll(cls).forEach(el => {
+                        el.remove();
+                        logDetectionAttempt(`Removed custom class element: ${cls}`);
+                    });
+                });
+
+                (data.customSuppressedIds || []).forEach(id => {
+                    document.querySelectorAll(id).forEach(el => {
+                        el.remove();
+                        logDetectionAttempt(`Removed custom ID element: ${id}`);
+                    });
+                });
+            });
         }
 
         function scanScripts() {

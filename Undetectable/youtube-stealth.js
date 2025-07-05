@@ -13,7 +13,6 @@
     });
 
     function runYouTubeStealth() {
-        // --- Logging Utilities ---
         function logDetectionAttempt(message) {
             const timestamp = new Date().toLocaleString();
             const hostname = window.location.hostname;
@@ -35,34 +34,23 @@
                     chrome.storage.local.get({ detectionLog: [] }, (data) => {
                         try {
                             if (!data || !chrome.runtime?.id) throw new Error('Chrome context lost');
-
                             const updatedLog = Array.isArray(data.detectionLog) ? data.detectionLog : [];
                             updatedLog.unshift(entry);
-
                             chrome.storage.local.set({ detectionLog: updatedLog }, () => {
                                 const msg = chrome.runtime?.lastError?.message || '';
-                                if (msg.includes('Extension context invalidated')) {
-                                    fallbackLog(entry);
-                                } else if (msg) {
-                                    console.warn('Log write failed:', msg);
-                                }
+                                if (msg.includes('Extension context invalidated')) fallbackLog(entry);
+                                else if (msg) console.warn('Log write failed:', msg);
                             });
                         } catch (callbackError) {
                             const err = String(callbackError);
-                            if (err.includes('Extension context invalidated')) {
-                                fallbackLog(entry);
-                            } else {
-                                console.warn('Log write failed (callback):', callbackError);
-                            }
+                            if (err.includes('Extension context invalidated')) fallbackLog(entry);
+                            else console.warn('Log write failed (callback):', callbackError);
                         }
                     });
                 } catch (outerError) {
                     const err = String(outerError);
-                    if (err.includes('Extension context invalidated')) {
-                        fallbackLog(entry);
-                    } else {
-                        console.warn('Log write failed (outer):', outerError);
-                    }
+                    if (err.includes('Extension context invalidated')) fallbackLog(entry);
+                    else console.warn('Log write failed (outer):', outerError);
                 }
 
                 detectionTimestamps[hostname] = now;
@@ -76,11 +64,9 @@
             try {
                 const existing = JSON.parse(sessionStorage.getItem('detectionLog') || '[]');
                 if (!Array.isArray(existing)) throw new Error('Invalid session log');
-
                 existing.unshift(entry);
                 const trimmed = existing.slice(0, 50);
                 sessionStorage.setItem('detectionLog', JSON.stringify(trimmed));
-
                 console.info('Fallback log saved in sessionStorage.');
             } catch (err) {
                 console.warn('Fallback logging failed:', err);
@@ -101,6 +87,24 @@
 
         cleanupOldLogs();
 
+        // Custom class/ID suppression
+        chrome.storage.local.get(['customSuppressedDivs', 'customSuppressedIds'], (data) => {
+            (data.customSuppressedDivs || []).forEach(cls => {
+                document.querySelectorAll(cls).forEach(el => {
+                    el.remove();
+                    logDetectionAttempt(`Removed custom class element: ${cls}`);
+                });
+            });
+
+            (data.customSuppressedIds || []).forEach(id => {
+                document.querySelectorAll(id).forEach(el => {
+                    el.remove();
+                    logDetectionAttempt(`Removed custom ID element: ${id}`);
+                });
+            });
+        });
+
+        // Ad-stripping logic
         if (!Object.getOwnPropertyDescriptor(window, 'ytInitialPlayerResponse')) {
             let originalYtInitialPlayerResponse;
             Object.defineProperty(window, 'ytInitialPlayerResponse', {
