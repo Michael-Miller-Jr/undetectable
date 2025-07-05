@@ -11,7 +11,7 @@ For the sake of clarity: When the description says it "simulates normal ad behav
 
 This tricks anti-adblock scripts into thinking ads are working normally, even though your ad blocker is still quietly blocking them in the background.
 
-So to clarify: the extension doesn’t block or display real ads, but it fakes the presence of ads just enough to fool detection mechanisms. That’s the key to staying “undetectable.”
+So to clarify: the extension doesn't block or display real ads, but it fakes the presence of ads just enough to fool detection mechanisms. That's the key to staying “undetectable.”
 
 ## 💡 Why This Exists
 The author of this extension believes users should have the freedom to browse the internet without constant interruptions or coercive messaging. Just as individuals can walk down a street and choose to ignore advertisements in the physical world, they should be able to do the same online.
