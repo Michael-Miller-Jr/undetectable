@@ -86,6 +86,14 @@
                 transform: translateX(22px);
             }
 
+        .custom-classes-section {
+            margin-top: 40px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .log-section {
             margin-top: 40px;
             text-align: left;
@@ -147,6 +155,25 @@
             .log-btn:hover {
                 background-color: #f0f4ff;
             }
+
+        textarea {
+            font-family: monospace;
+            font-size: 13px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            margin-top: 5px;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        #customSaveStatus {
+            font-size: 12px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -162,16 +189,39 @@
         </label>
     </div>
 
+    <div class="custom-classes-section">
+    <h2>Custom Suppressed Elements</h2>
+
+    <div>
+        <label for="customClasses">Suppress these classes (e.g. <code>.my-ad-popup</code>):</label><br>
+        <textarea id="customClasses" rows="4" style="width: 100%;" placeholder=".class-one
+.class-two"></textarea>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <label for="customIds">Suppress these IDs (e.g. <code>#annoying-banner</code>):</label><br>
+        <textarea id="customIds" rows="4" style="width: 100%;" placeholder="#id-one
+#id-two"></textarea>
+    </div>
+
+    <div class="button-row">
+        <button id="saveCustomSelectors" class="log-btn" style="margin-top: 10px;">Save Custom Selectors</button>
+    </div>
+        <span id="customSaveStatus" style="margin-left: 10px;"></span>
+    </div>
+
     <div class="log-section">
         <h2>Detection Log</h2>
         <p>This log shows when a site attempted to detect an ad blocker and how Undetectable responded.</p>
         <ul id="log"></ul>
+
         <div style="margin-bottom:15px;text-align:center;">
             <label style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; cursor: pointer;">
                 <input type="checkbox" id="showAllToggle" style="vertical-align: middle;">
                 <span>Show all logs (disable to show only last 24 hours). Log auto-clears after 14 days unless cleared manually.</span>
             </label>
         </div>
+
         <div class="button-row">
             <button class="log-btn" id="clearLog">Clear Log</button>
             <button class="log-btn" id="exportLog">Export Log</button>

@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const exportBtn = document.getElementById('exportLog');
     const reloadBtn = document.getElementById('reloadPage');
     const showAllToggle = document.getElementById('showAllToggle');
+    const customDivsInput = document.getElementById('customClasses');
+    const customIdsInput = document.getElementById('customIds');
+    const saveCustomBtn = document.getElementById('saveCustomSelectors');
+    const saveStatus = document.getElementById('customSaveStatus');
 
     // Load toggle state
     chrome.storage.local.get(['enabled'], function (result) {
@@ -25,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const now = new Date().getTime();
             const filtered = log.filter(entry => {
                 if (showAll) return true;
-
                 const match = entry.match(/^\[(.*?)\]/);
                 if (match) {
                     const entryTime = new Date(match[1]).getTime();
@@ -81,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadLogEntries(this.checked);
     });
 
-    // Load logs on page load (respect current toggle state)
+    // Load logs on page load
     loadLogEntries(showAllToggle?.checked);
 
     // Cleanup logs older than 14 days
@@ -100,5 +103,28 @@ document.addEventListener('DOMContentLoaded', function () {
         if (filtered.length < log.length) {
             chrome.storage.local.set({ detectionLog: filtered });
         }
+    });
+
+    // Load saved custom selectors
+    chrome.storage.local.get(['customSuppressedDivs', 'customSuppressedIds'], (data) => {
+        customDivsInput.value = (data.customSuppressedDivs || []).join('\n');
+        customIdsInput.value = (data.customSuppressedIds || []).join('\n');
+    });
+
+    // Save custom selectors
+    saveCustomBtn?.addEventListener('click', () => {
+        const divs = customDivsInput.value.split('\n').map(s => s.trim()).filter(Boolean);
+        const ids = customIdsInput.value.split('\n').map(s => s.trim()).filter(Boolean);
+        chrome.storage.local.set({
+            customSuppressedDivs: divs,
+            customSuppressedIds: ids
+        }, () => {
+            if (saveStatus) {
+                saveStatus.textContent = 'Saved!';
+                setTimeout(() => {
+                    saveStatus.textContent = '';
+                }, 1500);
+            }
+        });
     });
 });
