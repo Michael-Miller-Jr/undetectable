@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Undetectable Options</title>
     <style>
         body {
@@ -12,10 +12,34 @@
             color: #333;
         }
 
+            body.dark-mode {
+                background-color: #121212;
+                color: #f1f1f1;
+            }
+
         h1 {
-            color: #1b3a7a;
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 1.2rem;
+        }
+
+        .log-section h2,
+        .custom-classes-section h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2 {
+            color: #f1f1f1;
+        }
+
+        .advanced-notice {
+            font-weight: 600;
+            font-size: 0.8em;
         }
 
         .ghost-icon {
@@ -87,7 +111,7 @@
             }
 
         .custom-classes-section {
-            margin-top: 40px;
+            margin-top: 1rem;
             text-align: left;
             max-width: 600px;
             margin-left: auto;
@@ -97,22 +121,20 @@
         .log-section {
             margin-top: 40px;
             text-align: left;
-            max-width: 600px;
+            max-width: 610px;
             margin-left: auto;
             margin-right: auto;
         }
-
-            .log-section h2 {
-                font-size: 20px;
-                color: #1b3a7a;
-                margin-bottom: 10px;
-            }
 
             .log-section p {
                 font-size: 14px;
                 color: #555;
                 margin-bottom: 10px;
             }
+
+        body.dark-mode .log-section p {
+            color: #bbb;
+        }
 
         #log {
             background-color: #fff;
@@ -125,14 +147,23 @@
             list-style-type: none;
         }
 
-            #log li {
-                padding: 6px 0;
-                border-bottom: 1px solid #eee;
-            }
+        body.dark-mode #log {
+            background-color: #1e1e1e;
+            border-color: #444;
+        }
 
-                #log li:last-child {
-                    border-bottom: none;
-                }
+        #log li {
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        body.dark-mode #log li {
+            border-bottom: 1px solid #333;
+        }
+
+        #log li:last-child {
+            border-bottom: none;
+        }
 
         .button-row {
             display: flex;
@@ -156,6 +187,16 @@
                 background-color: #f0f4ff;
             }
 
+        body.dark-mode .log-btn {
+            background: #222;
+            color: #ddd;
+            border-color: #888;
+        }
+
+            body.dark-mode .log-btn:hover {
+                background: #333;
+            }
+
         textarea {
             font-family: monospace;
             font-size: 13px;
@@ -166,6 +207,12 @@
             margin-top: 5px;
         }
 
+        body.dark-mode textarea {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            border-color: #555;
+        }
+
         label {
             font-weight: 600;
         }
@@ -174,39 +221,103 @@
             font-size: 12px;
             font-style: italic;
         }
+
+        details.how-to {
+            margin: 10px 0;
+        }
+
+            details.how-to summary {
+                font-size: 12px;
+                color: #1b3a7a;
+                text-decoration: underline;
+                cursor: pointer;
+                display: inline-block;
+                margin-left: 0;
+            }
+
+        body.dark-mode details.how-to summary {
+            color: #8ab4f8;
+        }
+
+        .how-to-block {
+            width: 100%;
+            max-width: 585px;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #222;
+        }
+
+        body.dark-mode .how-to-block {
+            background: #2a2a2a;
+            border-color: #555;
+            color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
     <h1>Options</h1>
+
     <div class="ghost-icon">
-        <img src="icons/icon128.png" alt="Ghost Icon">
+        <img src="icons/icon128.png" alt="Ghost Icon" />
     </div>
+
     <div class="switch-container">
         <span>Enable</span>
         <label class="switch">
-            <input type="checkbox" id="toggle" checked>
+            <input type="checkbox" id="toggle" checked />
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="switch-container">
+        <span>Dark Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle" />
             <span class="slider"></span>
         </label>
     </div>
 
     <div class="custom-classes-section">
-    <h2>Custom Suppressed Elements</h2>
+        <h2>Custom Suppressed Elements <span class="advanced-notice">(Advanced Users Only)</span></h2>
+        <details class="how-to">
+            <summary>Show Me How</summary>
+            <div class="how-to-block">
+                <strong>How to find Class or ID selectors:</strong><br /><br />
+                1. Right-click on the annoying ad or popup<br />
+                2. Choose <em>"Inspect"</em> to open DevTools<br />
+                3. Hover over elements until the right one highlights, and note the name in between the &quot; marks<br />
+                4. Look for a Class (e.g. <code>&lt;div class=&quot;promo-banner&quot;&gt;</code>) or ID (e.g. <code>&lt;div id=&quot;ad-overlay&quot;&gt;</code>)<br />
+                5. Copy and paste the Class or ID name (aka selector) into the appropriate box below<br /><br />
 
-    <div>
-        <label for="customClasses">Suppress these classes (e.g. <code>.my-ad-popup</code>):</label><br>
-        <textarea id="customClasses" rows="4" style="width: 100%;" placeholder=".class-one
+                <img src="how-to.jpg" width="590px" /><br /><br />
+
+                Tip: Classes start with <code>.</code> and IDs start with <code>#</code><br /><br />
+                Example Class:<br /><code>&lt;div class=&quot;promo-banner&quot;&gt;</code> should be entered as <code>.promo-banner</code><br /><br />
+                Example ID:<br /><code>&lt;div id=&quot;ad-overlay&quot;&gt;</code> should be entered as <code>#ad-overlay</code><br /><br />
+                *If you make a mistake, remove the last . or # added
+            </div>
+        </details>
+        <div>
+            <label for="customClasses">Suppress these classes (e.g. <code>.my-ad-popup</code>):</label><br />
+            <textarea id="customClasses" rows="4" style="width: 100%;" placeholder=".class-one
 .class-two"></textarea>
-    </div>
+        </div>
 
-    <div style="margin-top: 10px;">
-        <label for="customIds">Suppress these IDs (e.g. <code>#annoying-banner</code>):</label><br>
-        <textarea id="customIds" rows="4" style="width: 100%;" placeholder="#id-one
+        <div style="margin-top: 10px;">
+            <label for="customIds">Suppress these IDs (e.g. <code>#annoying-banner</code>):</label><br />
+            <textarea id="customIds" rows="4" style="width: 100%;" placeholder="#id-one
 #id-two"></textarea>
-    </div>
+        </div>
 
-    <div class="button-row">
-        <button id="saveCustomSelectors" class="log-btn" style="margin-top: 10px;">Save Custom Selectors</button>
-    </div>
+        <div class="button-row">
+            <button id="saveCustomSelectors" class="log-btn" style="margin-top: 10px;">Save Custom Selectors</button>
+        </div>
         <span id="customSaveStatus" style="margin-left: 10px;"></span>
     </div>
 
