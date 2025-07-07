@@ -9,16 +9,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const customIdsInput = document.getElementById('customIds');
     const saveCustomBtn = document.getElementById('saveCustomSelectors');
     const saveStatus = document.getElementById('customSaveStatus');
+    const darkToggle = document.getElementById('darkModeToggle');
 
     // Load toggle state
-    chrome.storage.local.get(['enabled'], function (result) {
+    chrome.storage.local.get(['enabled', 'darkMode'], function (result) {
         toggle.checked = result.enabled !== false;
+        const isDark = result.darkMode === true;
+        if (darkToggle) {
+            darkToggle.checked = isDark;
+        }
+        document.body.classList.toggle('dark-mode', isDark);
     });
 
     // Update toggle state
     toggle.addEventListener('change', function (e) {
         chrome.storage.local.set({ enabled: e.target.checked });
     });
+
+    // Save dark mode toggle state
+    if (darkToggle) {
+        darkToggle.addEventListener('change', function () {
+            const isDark = this.checked;
+            chrome.storage.local.set({ darkMode: isDark });
+            document.body.classList.toggle('dark-mode', isDark);
+        });
+    }
 
     // Function to load and display log entries (filtered if needed)
     function loadLogEntries(showAll) {

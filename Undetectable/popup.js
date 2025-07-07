@@ -3,9 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const optionsBtn = document.getElementById('options-btn');
     const reloadBtn = document.getElementById('reloadPage');
 
-    // Load saved state
-    chrome.storage.local.get(['enabled'], function (result) {
+    // Load saved state (enabled toggle + dark mode)
+    chrome.storage.local.get(['enabled', 'darkMode'], function (result) {
         toggle.checked = result.enabled !== false;
+
+        if (result.darkMode === true) {
+            document.body.classList.add('dark-mode');
+        }
     });
 
     // Toggle enable setting
