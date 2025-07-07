@@ -236,7 +236,7 @@ It follows modern Chrome Extension best practices for:
 ## 💡 Future Enhancements
 
 - Site-specific enable/disable toggle  
-- Dark mode UI  
+- ~~Dark mode UI~~ (Now Included)  
 - Optional remote sync or import/export rules  
 - ~~Smarter fingerprint evasion~~ (Now Included)
 
