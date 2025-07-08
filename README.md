@@ -251,7 +251,7 @@ Proprietary / All Rights Reserved (No license declared)
 
 ## 🙌 Contributing
 
-Pull requests and issues are welcome! Whether it's improving stealth behavior or UI polish, feel free to contribute.
+Pull requests and issues are welcome! Whether it's improving stealth behavior or UI polish, feel free to contribute (Please Note: License will remain the same, Proprietary / All Rights Reserved regardless of your contribution).
 
 ---
 
