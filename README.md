@@ -244,7 +244,8 @@ It follows modern Chrome Extension best practices for:
 
 ## 📜 License
 
-GPL-3.0 license
+Proprietary / All Rights Reserved (No license declared)
+- If a project has no license, you cannot legally reuse, copy, modify, or distribute the code. All rights are reserved by default under copyright law.
 
 ---
 
