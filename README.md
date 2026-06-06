@@ -21,7 +21,9 @@ A quiet, respectful browsing experience where users - not aggressive scripts or 
 
 This tool isn't about circumventing fair monetization; it's about pushing back against disruptive, invasive practices that degrade the web experience. While your ad blocker handles the job of stopping ads from being loaded or shown, Undetectable works alongside it to prevent detection scripts from realizing that ads are missing. It covers your tracks by faking the presence of ads, helping avoid nag screens, overlays, or content blocks.
 
-Even major platforms and ad networks (including Google) have unknowingly served malicious ads, highlighting a serious flaw in the system: there's often no real-time oversight or "lifeguard on duty" when things go wrong. Being forced to swim in a sea of ads without that safety net is inherently risky. When paired with a trusted ad blocker, Undetectable adds another layer of control and protection - quietly helping users avoid both annoyance and potential harm.
+Even major platforms and ad networks (including Google) have unknowingly served malicious ads, highlighting a serious flaw in the system: there's often no real-time oversight or "lifeguard on duty" when things go wrong. Being forced to swim in a sea of ads without that safety net is inherently risky. Furthermore, the FBI has stated "Use an ad blocking extension when performing internet searches" - Reference: (https://www.ic3.gov/PSA/2022/PSA221221) 
+
+When paired with a trusted ad blocker, Undetectable adds another layer of control and protection - quietly helping users avoid both annoyance and potential harm.
 
 ---
 
