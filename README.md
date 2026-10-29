@@ -1,79 +1,86 @@
-# WebRTC Blocker
+# Undetectable
 
-**WebRTC Blocker** is a Chrome extension designed to stop your browser from leaking your real IP address through WebRTC. While it doesn't block ads itself, it hardens your browser against modern fingerprinting techniques like Canvas noise injection, WebGL spoofing, and timezone masking. It enforces Chrome's strictest network-level IP policy, ensuring your VPN works the way it's supposed to. All detection attempts are logged locally, and you stay in control with a clean, user-friendly popup and options interface.
+![icon128](https://github.com/user-attachments/assets/d7a1a299-2d34-46d1-a14c-19d791d701d2)
 
-For the sake of clarity: When the description says it "hides your IP" or "hardens your browser," it means that the extension:
-- Neuters `RTCPeerConnection` to instantly block peer-to-peer connections from exposing your real local or public IP address.
-- Enforces Chrome's native network policies (like `disable_non_proxied_udp`) to prevent raw UDP packets from bypassing your VPN.
-- Fakes hardware fingerprints by adding invisible noise to HTML canvases and overriding WebGL vendor/renderer strings, so trackers can't uniquely identify your device.
-- Blocks silent media access by rejecting `getUserMedia` requests, stopping sites from turning on your webcam or microphone without permission.
+**Undetectable** is a Chrome extension designed to work alongside your ad blocker - not replace it. While it doesn't block ads itself, it helps prevent websites from detecting that you're using an ad blocker, basically an ad block detection bypass. By simulating normal ad behavior, spoofing common detection methods, and hiding anti-adblock warnings, it keeps your browsing smooth and uninterrupted. All detection attempts are logged locally, and you stay in control with a clean, user-friendly popup and options interface.
 
-This protects your privacy, even though your VPN is still quietly routing your traffic in the background.
+For the sake of clarity: When the description says it "simulates normal ad behavior" or "spoofs normal ads," it means that the extension:
+- Creates decoy ad elements like `<div class="adsbygoogle">` or `<ins class="ad-slot">` that look like real ads to detection scripts.
+- Fakes global ad variables like window.adsbygoogle or window.google_ad_status so scripts that try to detect whether ads are loading see values that indicate ads are loading.
+- Overrides or fills in attributes like data-ad-status="unfilled" → "filled" to make the page believe ads successfully loaded.
 
-So to clarify: the extension doesn't replace your VPN or ad blocker, but it hardens the browser just enough to prevent leaks and tracking scripts. That's the key to staying truly private.
+This tricks anti-adblock scripts into thinking ads are working normally, even though your ad blocker is still quietly blocking them in the background.
+
+So to clarify: the extension doesn't block or display real ads, but it fakes the presence of ads just enough to fool detection mechanisms. That's the key to staying “undetectable.”
 
 ## 💡 Why This Exists
-The author of this extension believes users should have the freedom to browse the internet securely without their privacy being compromised by underlying browser flaws. Just as individuals can walk down a street and choose to ignore advertisements in the physical world, they should be able to use a VPN without their real IP address leaking through WebRTC.
+The author of this extension believes users should have the freedom to browse the internet without constant interruptions or coercive messaging. Just as individuals can walk down a street and choose to ignore advertisements in the physical world, they should be able to do the same online.
 
-WebRTC Blocker was created to support this principle:
-A quiet, secure browsing experience where users - not aggressive scripts or hidden API calls - remain in control.
+Undetectable was created to support this principle:
+A quiet, respectful browsing experience where users - not aggressive scripts or popup warnings - remain in control.
 
-This tool isn't about circumventing fair monetization; it's about pushing back against invasive practices that degrade user privacy. While your VPN handles the job of masking your traffic, WebRTC Blocker works alongside it to prevent detection scripts from realizing your real location. It covers your tracks by patching native browser APIs and enforcing strict network policies, helping avoid IP leaks, fingerprinting, and forced hardware access. 
+This tool isn't about circumventing fair monetization; it's about pushing back against disruptive, invasive practices that degrade the web experience. While your ad blocker handles the job of stopping ads from being loaded or shown, Undetectable works alongside it to prevent detection scripts from realizing that ads are missing. It covers your tracks by faking the presence of ads, helping avoid nag screens, overlays, or content blocks.
 
-Furthermore, the FBI has stated "Use an ad blocking extension when performing internet searches" - Reference: (https://www.ic3.gov/PSA/2022/PSA221221). WebRTC leaks are a similarly documented privacy flaw.
+Even major platforms and ad networks (including Google) have unknowingly served malicious ads, highlighting a serious flaw in the system: there's often no real-time oversight or "lifeguard on duty" when things go wrong. Being forced to swim in a sea of ads without that safety net is inherently risky. Furthermore, the FBI has stated "Use an ad blocking extension when performing internet searches" - Reference: (https://www.ic3.gov/PSA/2022/PSA221221) 
 
-When paired with a trusted VPN, WebRTC Blocker adds another layer of control and protection - quietly helping users avoid both location leaks and potential harm.
+When paired with a trusted ad blocker, Undetectable adds another layer of control and protection - quietly helping users avoid both annoyance and potential harm.
 
 ---
 
 ## 🚀 Features
 
-- **Stop WebRTC Leaks**  
-  Blocks `RTCPeerConnection` and forces Chrome's network policy to strict (`disable_non_proxied_udp`), ensuring your VPN's IP is the only one seen by websites.
+- **Block Ad Block Detection**  
+  Prevents websites from detecting your ad blocker by spoofing ads, patching globals, and injecting decoys.
 
-- **Fingerprint Hardening**  
-  Add invisible noise to Canvas readbacks and spoof your WebGL vendor/renderer strings (e.g., masking an NVIDIA RTX 3070 as a generic Google Inc. adapter). 
+- **Hide Disable-Adblock Notices**  
+  Automatically removes modals, banners, and overlays that ask you to turn off your ad blocker.
 
-- **Per-Site Allowlist**  
-  Need to use Google Meet or Discord? Add trusted sites to the allowlist. The extension shows you exactly which sites are "Protected" and which are "Exempted."
+- **Inject Fake Ad Slots**  
+  Simulates "filled" ad containers using hidden or dummy elements to fool detection scripts.
 
-- **Activity Logging**  
-  Tracks blocked WebRTC and Media attempts locally in `chrome.storage.local`. View which sites are actively trying to probe your browser.
+- **Spoof Detection Variables**  
+  Mocks `adsbygoogle`, `google_ad_status`, and other commonly checked global variables.
 
-- **Built-in Leak Test**  
-  A dedicated test page runs entirely in your browser to verify WebRTC, Media, Canvas, WebGL, and Timezone protections are actively working.
+- **Log Detection Attempts Locally**  
+  Tracks and stores detection attempts in `chrome.storage.local`—view, export, or clear logs via the Options page.
 
 - **Enable/Disable with One Click**  
-  Use the popup toggle to instantly enable or disable stealth functionality. Choose from Paranoid, Balanced, or Compatibility presets to instantly dial in your privacy settings.
+  Use the popup toggle to instantly enable or disable stealth functionality. Includes a quick "Reload Page" button.
 
 ---
 
-## 🧱 Works Best With These VPNs and Privacy Tools
-WebRTC Blocker is designed to complement your existing privacy stack, not replace it. It works best when used alongside the following:
-
-- **A Trusted VPN**
-The whole point of this extension is to make your VPN work properly. Whether you use Mullvad, ProtonVPN, or a custom WireGuard setup, this extension closes the WebRTC leak loophole.
+## 🧱 Works Best With These Ad Blockers
+Undetectable is designed to complement popular ad blockers, not replace them. It works best when used alongside the following:
 
 - **uBlock Origin**
-Handles network-level ad blocking and script filtering. WebRTC Blocker handles browser-level hardware and network leaks.
+Lightweight and highly customizable, with minimal resource usage.
+
+- **Adblock Plus**
+Widely used and easy to configure, with options for filter subscriptions.
+
+- **Ghostery**
+Focuses on privacy and tracker blocking, with some ad-blocking capabilities.
+
+- **Brave Browser (Built-in Shield)**
+Built-in ad and tracker blocking, which Undetectable enhances by helping suppress detection prompts.
 
 - **Privacy Badger**
-Created by the EFF, this tool blocks trackers. WebRTC Blocker prevents those trackers from bypassing the network layer.
+Created by the EFF, this tool blocks trackers and some ads based on behavior.
 
-These tools handle the blocking. WebRTC Blocker ensures your IP doesn't leak around them.
+These tools handle the blocking. Undetectable ensures you don’t get hassled for using them.
 
 ---
 
 ## 🛠️ Installation
 
-To protect your privacy and avoid detection, **WebRTC Blocker must be loaded manually as an unpacked extension**:
+To protect your privacy and avoid detection, **Undetectable must be loaded manually as an unpacked extension**:
 
 1. Download or clone this repository.
 2. Open Chrome and go to `chrome://extensions/`
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the extension folder.
 
-WebRTC Blocker will now appear in your toolbar and work silently across supported sites.
+Undetectable will now appear in your toolbar and work silently across supported sites.
 
 ---
 
@@ -95,9 +102,9 @@ Chrome Web Store extensions have **permanent, globally known IDs**. Websites can
 
 Google prohibits or limits functionality like:
 
-- Spoofing detection variables (WebGL, Canvas)
-- Blocking native browser APIs (`RTCPeerConnection`)
-- Interfering with page scripts
+- Spoofing detection variables
+- Blocking adblock popups
+- Interfering with ad scripts
 
 By remaining unpacked:
 
@@ -109,61 +116,61 @@ By remaining unpacked:
 
 ## 📁 File Structure
 
-- **icons/**
-  - icon16.png
-  - icon32.png
-  - icon48.png
-  - icon128.png
-- **.js files**
-  - background.js
-  - content.js
-  - rules.js
-  - theme.js
-  - popup.js
-  - options.js
-  - log.js
-  - test.js
-- **.html files**
-  - popup.html
-  - options.html
-  - log.html
-  - test.html
-- **.css files**
-  - popup.css
-  - options.css
-  - log.css
-  - test.css
-- **Config**
-  - manifest.json
-  - README.md
+```
+undetectable/
+├── icons/
+│   ├── icon16.png
+│   ├── icon48.png
+│   └── icon128.png
+├── popup.html
+├── popup.js
+├── options.html
+├── options.js
+├── universal-stealth.js
+├── youtube-stealth.js
+├── stealth.min.js
+├── injector.js
+├── manifest.json
+└── README.md
+```
 
 ---
 
 ## ⚙️ Permissions Used
 
-The extension requests the following permissions:
-`privacy`, `storage`, `scripting`, `tabs`, `notifications`, `declarativeNetRequestWithHostAccess`, and `<all_urls>` host permissions.
+```json
+{
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"]
+}
+```
 
-- `privacy`: Needed to change Chrome's built-in WebRTC IP handling policy.  
-- `storage`: For saving toggle states, allowlists, and activity logs.  
-- `tabs`: Used only to check the URL of the active tab to show the "Allow this site" button.
-- `notifications`: Used to alert you the first time a site tries to use WebRTC on a new page.
-- `<all_urls>`: Needed to run stealth logic on any site and prevent WebRTC leaks across the web.
+- `storage`: For saving toggle states and detection logs.  
+- `<all_urls>`: Needed to run stealth logic on any site (excluding YouTube, which uses its own logic).
 
 ---
 
 ## 🔐 Safe and Secure Practices
 
 ### ✅ 1. No Remote Code Execution  
-- All scripts (e.g., `content.js`, `background.js`) are locally stored and listed in `manifest.json`.  
+- All scripts (e.g., `universal-stealth.js`, `youtube-stealth.js`) are locally stored and listed in `manifest.json`.  
 - No use of `eval()`, `new Function()`, or dynamic script loading from external sources.
 
 ### ✅ 2. Minimal and Appropriate Permissions
-- `privacy` and `storage` are used solely for enforcing policies and saving logs/settings.  
-- `<all_urls>` is justified due to the extension’s purpose of preventing WebRTC leaks across the entire web.
+
+```json
+{
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"]
+}
+```
+
+- `storage` is used solely for saving logs and user settings.  
+- `<all_urls>` is justified due to the extension’s purpose of detecting and preventing adblock triggers across the web.
 
 ### ✅ 3. No Access to Sensitive APIs  
 The extension does **not** use or request:  
+- `tabs.executeScript`  
 - `cookies`  
 - `webRequest`  
 - `history`  
@@ -183,11 +190,11 @@ The extension does **not** use or request:
 ### ⚠️ Areas to Note (Safe but Worth Awareness)
 
 - **`chrome.tabs.query()` in `popup.js`**  
-  Used only to check the current tab URL.  
-  Does **not** access tab content.
+  Used only to reload the current tab.  
+  Does **not** require `tabs` permission under MV3 and does **not** access tab content.
 
-- **Global Spoofing (`WebGL`, `Canvas`, `Intl.DateTimeFormat`)**  
-  These are spoofed for stealth, which is effective but can be caught by aggressive fingerprinting scripts.  
+- **Global Spoofing (`adsbygoogle`, `google_ad_status`)**  
+  These are spoofed for stealth, which is effective but can be caught by aggressive detection scripts.  
   This is a stealth-evasion tradeoff, not a security concern.
 
 - **`<all_urls>` Access**  
@@ -221,17 +228,18 @@ It follows modern Chrome Extension best practices for:
 
 ## 🧪 Use Cases
 
-- Prevent streaming services (like HBO Max or Netflix) from detecting your VPN via WebRTC IP leaks.
-- Block malicious scripts from silently accessing your webcam or microphone.
-- Stop fingerprinting scripts from reading your exact graphics card model or canvas renderings.
-- Log exactly which domains are trying to ping your local network.
+- Prevent YouTube’s adblock warning overlays  
+- Stop annoying popups on blogs or news sites  
+- Log which sites are trying to detect ad blockers  
+- Keep music playing in the background without interruptions
 
 ---
 
 ## 💡 Future Enhancements
 
-- Auto-detect VPN connection state
-- Optional remote sync or import/export rules
+- Site-specific enable/disable toggle  
+- ~~Dark mode UI~~ (Now Included)  
+- Optional remote sync or import/export rules  
 - ~~Smarter fingerprint evasion~~ (Now Included)
 
 ---
@@ -251,4 +259,4 @@ Pull requests and issues are welcome! Whether it's improving stealth behavior or
 
 ## 🧊 Final Note
 
-WebRTC Blocker is for users who want peace of mind and a smoother browsing experience - without being tracked across the web or having their VPN rendered useless by browser leaks. Install it, toggle it, and browse quietly.
+Undetectable is for users who want peace of mind and a smoother browsing experience - without being harassed by popup overlays, page blocks, or false ad prompts. Install it, toggle it, and browse quietly.
